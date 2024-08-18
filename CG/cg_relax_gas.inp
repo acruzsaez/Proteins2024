@@ -1,0 +1,87 @@
+S1PR1_S1P_TMD_145_mem_16_4_CG_100_ps.pdb fold2 0 0 0 0 
+
+aa
+   setcrg 5 -1
+   ion_simp_res 5
+   ion_simp_res 12
+   ion_simp_res 18
+   ion_simp_res 19
+   ion_simp_res 20
+   ion_simp_res 24
+   ion_simp_res 40
+   ion_simp_res 50
+   ion_simp_res 52
+   ion_simp_res 53
+   ion_simp_res 56
+   ion_simp_res 69
+   ion_simp_res 89
+   ion_simp_res 98
+   ion_simp_res 99
+   ion_simp_res 119
+   ion_simp_res 120
+   ion_simp_res 126
+   ion_simp_res 128
+   ion_simp_res 137
+   ion_simp_res 178
+   ion_simp_res 201
+   ion_simp_res 207
+   ion_simp_res 209
+   ion_simp_res 211
+   ion_simp_res 212
+   ion_simp_res 216
+   ion_simp_res 217
+   ion_simp_res 221
+   ion_simp_res 224
+   ion_simp_res 227
+   ion_simp_res 228
+   ion_simp_res 234
+   ion_simp_res 257
+   ion_simp_res 261
+   ion_simp_res 263
+   ion_simp_res 266
+   ion_simp_res 270
+   ion_simp_res 272
+   ion_simp_res 294
+   ion_simp_res 295
+   ion_simp_res 297
+   ion_simp_res 298
+   ion_simp_res 302
+
+end
+
+enzymix
+	relax
+#		rest_in ./four/restfq_000.10000
+		md_parm
+			temperature 150 
+			nsteps 20000
+			ss 0.0001
+			gas_phase 1
+                        region2a_r  55
+#			constraint_2 0.05
+#			movie_co all
+#			movie_co wat
+#			movie_fq 100
+			rest_fq  500
+			log_write_fq 100
+      		end
+   	end
+end
+
+analyze
+
+        makepdb
+                residue all
+                file_nm after_relax.pdb
+        end
+
+#	viewmovie
+#		file_nm template/movie.dat
+#		view_fq 100
+#		vwall
+#		form pdb
+#	end
+end
+
+
+end

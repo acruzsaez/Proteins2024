@@ -1,0 +1,105 @@
+./output/cgrelax_100_ps_gas/after_relax_cut.pdb 
+
+aa
+   setcrg 5 -1
+   ion_simp_res 5
+   ion_simp_res 12
+   ion_simp_res 18
+   ion_simp_res 19
+   ion_simp_res 20
+   ion_simp_res 24
+   ion_simp_res 40
+   ion_simp_res 50
+   ion_simp_res 52
+   ion_simp_res 53
+   ion_simp_res 56
+   ion_simp_res 69
+   ion_simp_res 89
+   ion_simp_res 98
+   ion_simp_res 99
+   ion_simp_res 119
+   ion_simp_res 120
+   ion_simp_res 126
+   ion_simp_res 128
+   ion_simp_res 137
+   ion_simp_res 178
+   ion_simp_res 201
+   ion_simp_res 207
+   ion_simp_res 209
+   ion_simp_res 211
+   ion_simp_res 212
+   ion_simp_res 216
+   ion_simp_res 217
+   ion_simp_res 221
+   ion_simp_res 224
+   ion_simp_res 227
+   ion_simp_res 228
+   ion_simp_res 234
+   ion_simp_res 257
+   ion_simp_res 261
+   ion_simp_res 263
+   ion_simp_res 266
+   ion_simp_res 270
+   ion_simp_res 272
+   ion_simp_res 294
+   ion_simp_res 295
+   ion_simp_res 297
+   ion_simp_res 298
+   ion_simp_res 302
+
+end
+
+cg_model
+
+   simp_to_expl_relax 1
+       simp_relax_steps 1 2
+#         simp_mc_pt  1
+#           ph 7
+#           pt_temp 298.0
+#           mc_steps 100000
+#           step_save 1
+
+# Participated/protonated input
+# -----------------------------
+#           participated_res all
+#           dielec_const 80 0.5
+#          file_prot_res charges.in
+#           dielec_factor 0.9 1
+#           size_factor 0.044
+#           cg_a_np_u_water 1.4
+
+#           cg_radius 5 7
+
+#           mem_model 1 24.0 0.0 Z
+
+#           pka_int_shift 0
+#           to_from_bulk_fq 2
+#           bulk_grid_rp 4.0
+#           bulk_f_r 0.00 4.0
+
+#         end     # End of  simp_mc_pt
+
+         md_parm_simp
+           temperature 300.0
+           nsteps_simp_gas 0
+           ss 0.0010
+           simple_c_scaling 1.0
+           cutpp 12.0
+           nonbond_lj_uh 10 8
+           gas_phase 1
+           region2a_r 200.0
+           constraint_2 0.0
+
+           hb_simp_gas_parm 2.0 1.0 15.0
+
+           no_elong
+
+#          ld_for_membrane 4.9 40.0 3.0 8.0 10.0
+
+         end
+
+   end    # End of  simp_to_expl_relax 1
+
+ end   # End of CG_-1
+
+end     # End of MOLARIS

@@ -1,0 +1,107 @@
+GAT229_CB1_pose_1_mem_16_4.pdb keepallh keephis
+
+analyze
+end
+
+enzymix
+  pre_enz
+   ionres 1
+   ionres 2
+   ionres 4
+   ionres 5
+   ionres 11
+   ionres 15
+   ionres 17
+   ionres 44
+   ionres 56
+   ionres 59
+   ionres 61
+   ionres 74
+   ionres 87
+   ionres 93
+   ionres 94
+   ionres 95
+   ionres 97
+   ionres 103
+   ionres 124
+   ionres 125
+   ionres 131
+   ionres 136
+   ionres 137
+   ionres 141
+   ionres 143
+   ionres 169
+   ionres 170
+   ionres 177
+   ionres 183
+   ionres 184
+   ionres 211
+   ionres 218
+   ionres 222
+   ionres 226
+   ionres 232
+   ionres 237
+   ionres 239
+   ionres 242
+   ionres 244
+   ionres 246
+   ionres 249
+   ionres 272
+   ionres 276
+   ionres 279
+   ionres 282
+   ionres 306
+   ionres 308
+   ionres 309
+   ionres 311
+   ionres 315
+   end
+
+    relax
+
+        md_parm
+            short_log
+            nsteps          2000
+            ss              0.0001
+            temperature     5.0
+            steep_mini      2000
+        #    gas_phase       1
+        #     movie_co        all wat
+        #     movie_fq        50
+            ex_w_center     5235 
+            water_r         20
+            region2a_r      20
+            langevin_r      22
+            water_mem_r     4.0
+        #   constraint_pair 5081 5034 5.0 5.0
+        #   constraint_pair 5082 5035 5.0 5.3
+        #    constraint_2    10.0
+        #    induce 1
+        #    indforce 1
+#            no_bulk
+        end
+    end
+end
+
+end
+end
+analyze
+    makepdb
+        residue all
+        file_nm restart.pdb
+    end
+
+    makepdb
+        residue all+w
+        file_nm end.pdb
+    end
+
+    viewmovie
+        file_nm   $OUT_DIR/movie.dat
+        view_fq   50
+        vwall
+        form      amber
+    end
+end
+
+end
